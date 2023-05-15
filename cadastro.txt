@@ -1,6 +1,0 @@
-carlos,123
-leopoldo,321
-maripilda,345
-leo,abc123
-leo,abc123
-leo,abc1234

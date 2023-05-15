@@ -1,12 +1,11 @@
 # PROJETO 6 - SISTEMA DE LOGIN
 import os
+import getpass as get
 
 lista = []
 
 # Funções
-def cadastrar_usuario():
-    nome = input('Nome para novo usuário: ')
-    senha = input('Senha para o novo usuário: ')
+def cadastrar_usuario(nome,senha):
     with open('cadastro.txt','a',encoding='utf-8',newline='') as arquivo:
         arquivo.write(f'{nome},{senha}'+ os.linesep)
     return nome
@@ -31,9 +30,10 @@ def consultar_usuario(usuario,senha):
 while True:
     print('BEM-VINDO A ESTE SISTEMA\nEscolha uma opção: \n[1] - Fazer login\n[2] - Cadastrar novo usuário')
     opcao = input('Digite a sua opção: ')
+    usuario = input('Digite o seu usuário: ')
+    senha = get.getpass('Senha para o novo usuário:', stream=None)
+    
     if opcao == "1":
-        usuario = input('Digite o seu usuário: ')
-        senha = input('Digite a sua senha: ')
         logon = consultar_usuario(usuario,senha)
         
         if logon == 'certo':
@@ -45,7 +45,7 @@ while True:
             print('')
         
     if opcao == '2':
-        nome = cadastrar_usuario()
+        nome = cadastrar_usuario(usuario,senha)
         print(f'Usuário {nome} criado com sucesso!')
         print('')
         break
