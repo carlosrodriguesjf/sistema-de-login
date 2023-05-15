@@ -10,23 +10,25 @@ def consultar_usuario(usuario,senha):
     return lista
 
 
-
-
 # Criação de menu principal
 
-
-
-usuario = 'ca'
-senha = '232'
 lista = consultar_usuario(usuario,senha)
 
 
+for i in range(0,len(lista)):
+    usuarios = lista[i].split(',')
+    nome_usuario = usuarios[0]
+    senha_previa = usuarios[1].split('\r')
+    senha_usuario = senha_previa[0]
+    if usuario == nome_usuario and senha == senha_usuario:
+        print('Login Efetuado com sucesso')
+        break
+    else:
+        print('Login ou senha incorreta')
+    
 
-i = 0
-print(lista)
-for i in range(0, len(lista)-1):
-    nome = lista[i].split(',')
-    print(nome[i])
+
+
 
 
 
